@@ -34,12 +34,7 @@ x64:
             --static                                                     \
             --prefix=$(X64HOME) >> $(SRC)/config.log 2>&1             && \
         $(MAKE) install                                               && \
-	@export   CPP=x86_64-w64-mingw32-cpp                             \
-                  CXX="x86_64-w64-mingw32-g++      -m64"                 \
-                   CC="x86_64-w64-mingw32-gcc      -m64"                 \
-                   FC="x86_64-w64-mingw32-gfortran -m64"                 \
-                  F90="x86_64-w64-mingw32-gfortran -m64"                 \
-               RANLIB=x86_64-w64-mingw32-ranlib                       && \
+        cd -                                                          && \
         $(MAKE) -C $(SRC)/htslib                                         \
             ZLIB_ROOT=$(X86HOME)                                         \
                CFLAGS="-Wall -O2 -Wno-unused-function"
