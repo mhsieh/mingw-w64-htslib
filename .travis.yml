@@ -30,4 +30,5 @@ before_install:
 install:
   - mkdir -p $HOME/.wine/drive_c/windows
   - chmod -R 775 $HOME/.wine
+  - make x64-prep
 script: true
