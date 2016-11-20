@@ -27,4 +27,10 @@ x64-prep:
         ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libstdc++-6.dll     && \
         ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libgcc_s_sjlj-1.dll && \
         ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libgfortran-3.dll   && \
-        ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libquadmath-0.dll
+        ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libquadmath-0.dll   && \
+        cd $(SRC)/zlib-1.2.8                                          && \
+        test -e Makefile && $(MAKE) distclean || true                 && \
+        ./configure                                                      \
+            --static                                                     \
+            --prefix=$(I386HOME) >> $(SRC)/config.log 2>&1            && \
+        $(MAKE) install

@@ -30,5 +30,8 @@ before_install:
 install:
   - mkdir -p $HOME/.wine/drive_c/windows
   - chmod -R 775 $HOME/.wine
+# fetch zlib
+  - curl -O http://zlib.net/zlib-1.2.8.tar.gz
+  - tar zxvf zlib-1.2.8.tar.gz
   - make x64-prep
 script: true
