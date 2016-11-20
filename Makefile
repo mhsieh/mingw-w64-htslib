@@ -14,7 +14,7 @@ debug:
 clean: uninstall
 uninstall: 
 	rm -rf x64 i386
-x64-prep:
+x64:
 	@export   CPP=x86_64-w64-mingw32-cpp                             \
                   CXX="x86_64-w64-mingw32-g++      -m64"                 \
                    CC="x86_64-w64-mingw32-gcc      -m64"                 \
@@ -32,5 +32,14 @@ x64-prep:
         test -e Makefile && $(MAKE) distclean || true                 && \
         ./configure                                                      \
             --static                                                     \
-            --prefix=$(I386HOME) >> $(SRC)/config.log 2>&1            && \
-        $(MAKE) install
+            --prefix=$(X86HOME) >> $(SRC)/config.log 2>&1             && \
+        $(MAKE) install                                               && \
+	@export   CPP=x86_64-w64-mingw32-cpp                             \
+                  CXX="x86_64-w64-mingw32-g++      -m64"                 \
+                   CC="x86_64-w64-mingw32-gcc      -m64"                 \
+                   FC="x86_64-w64-mingw32-gfortran -m64"                 \
+                  F90="x86_64-w64-mingw32-gfortran -m64"                 \
+               RANLIB=x86_64-w64-mingw32-ranlib                       && \
+        $(MAKE) -C $(SRC)/htslib                                         \
+            ZLIB_ROOT=$(X86HOME)                                         \
+               CFLAGS="-Wall -O2 -Wno-unused-function"

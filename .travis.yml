@@ -33,5 +33,6 @@ install:
 # fetch zlib
   - curl -O http://zlib.net/zlib-1.2.8.tar.gz
   - tar zxvf zlib-1.2.8.tar.gz
-  - make x64-prep
+  - git clone https://github.com/PacificBiosciences/htslib.git
+  - make x64
 script: true
