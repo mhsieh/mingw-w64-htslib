@@ -36,5 +36,6 @@ x64:
         $(MAKE) install                                               && \
         cd -                                                          && \
         $(MAKE) -C $(SRC)/htslib                                         \
-            ZLIB_ROOT=$(X86HOME)                                         \
+                   CC=${CC}                                              \
+            ZLIB_ROOT=$(X64HOME)                                         \
                CFLAGS="-Wall -O2 -Wno-unused-function"
