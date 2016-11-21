@@ -40,4 +40,4 @@ x64:
                    CC="$(CC)"                                            \
             ZLIB_ROOT=$(X64HOME)                                         \
                CFLAGS="-Wall -O2 -Wno-unused-function"                   \
-             PLATFORM="MINGW-W64"
+             PLATFORM="MINGW"
