@@ -36,6 +36,7 @@ x64:
         $(MAKE) install                                               && \
         ls /usr/lib/gcc/x86_64-w64-mingw32/4.6/                       && \
         cd -                                                          && \
+        PATH=$(SRC)/bin:${PATH}                                          \
         $(MAKE) -C $(SRC)/htslib                                         \
                    CC="$(CC)"                                            \
             ZLIB_ROOT=$(X64HOME)                                         \
