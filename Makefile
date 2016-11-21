@@ -4,6 +4,12 @@
 SRC      := $(shell pwd)
 X64HOME  := $(SRC)/x64
 I386HOME := $(SRC)/i386
+CPP       = x86_64-w64-mingw32-cpp            
+CXX       = x86_64-w64-mingw32-g++      -m64
+ CC       = x86_64-w64-mingw32-gcc      -m64
+ FC       = x86_64-w64-mingw32-gfortran -m64
+F90       = x86_64-w64-mingw32-gfortran -m64
+RANLIB    = x86_64-w64-mingw32-ranlib
 
 debug:
 	@echo X64HOME  = $(X64HOME)
@@ -15,13 +21,7 @@ clean: uninstall
 uninstall: 
 	rm -rf x64 i386
 x64:
-	@export   CPP=x86_64-w64-mingw32-cpp                             \
-                  CXX="x86_64-w64-mingw32-g++      -m64"                 \
-                   CC="x86_64-w64-mingw32-gcc      -m64"                 \
-                   FC="x86_64-w64-mingw32-gfortran -m64"                 \
-                  F90="x86_64-w64-mingw32-gfortran -m64"                 \
-               RANLIB=x86_64-w64-mingw32-ranlib                       && \
-        cd $$HOME/.wine/drive_c/windows                               && \
+	@cd $$HOME/.wine/drive_c/windows                              && \
         rm -f libstdc++-6.dll libgcc_s_sjlj-1.dll                        \
               libgfortran-3.dll libquadmath-0.dll                     && \
         ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libstdc++-6.dll     && \
@@ -36,6 +36,6 @@ x64:
         $(MAKE) install                                               && \
         cd -                                                          && \
         $(MAKE) -C $(SRC)/htslib                                         \
-                   CC=${CC}                                              \
+                   CC="$(CC)"                                              \
             ZLIB_ROOT=$(X64HOME)                                         \
                CFLAGS="-Wall -O2 -Wno-unused-function"
