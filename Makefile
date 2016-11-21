@@ -34,8 +34,10 @@ x64:
             --static                                                     \
             --prefix=$(X64HOME) >> $(SRC)/config.log 2>&1             && \
         $(MAKE) install                                               && \
+        ls /usr/lib/gcc/x86_64-w64-mingw32/4.6/                       && \
         cd -                                                          && \
         $(MAKE) -C $(SRC)/htslib                                         \
-                   CC="$(CC)"                                              \
+                   CC="$(CC)"                                            \
             ZLIB_ROOT=$(X64HOME)                                         \
-               CFLAGS="-Wall -O2 -Wno-unused-function"
+               CFLAGS="-Wall -O2 -Wno-unused-function"                   \
+             PLATFORM="MINGW-W64"
