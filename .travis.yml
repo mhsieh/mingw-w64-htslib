@@ -20,11 +20,11 @@ addons:
       - mingw-w64
       - mingw-w64-dev
       - mingw-w64-tools
-      - wine
-      - tree
 
 before_install:
-  #- sudo apt-get autoremove
+  - sudo apt-get install -qq -y wine
+  - sudo apt-get install tree
+  - sudo apt-get autoremove
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 
