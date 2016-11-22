@@ -17,7 +17,7 @@ debug:
 
 clean: uninstall
 uninstall: 
-	rm -rf x64 i386
+	rm -rf x64
 x64:
 	@cd $$HOME/.wine/drive_c/windows                              && \
         rm -f libstdc++-6.dll libgcc_s_sjlj-1.dll                        \
@@ -40,6 +40,7 @@ x64:
         PATH=$(SRC)/bin:${PATH}                                          \
         $(MAKE) -C $(SRC)/htslib lib-static                              \
                    CC="$(CC)"                                            \
+	       RANLIB="$(RANLIB)"                                        \
             ZLIB_ROOT=$(X64HOME)                                         \
                CFLAGS="-Wall -O2 -I$(X64HOME)/include"                   \
               LDFLAGS="-L$(X64HOME)/lib $(X64HOME)/lib/libpthread.a"     \
