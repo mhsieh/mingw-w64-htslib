@@ -25,20 +25,20 @@ before_install:
   #- sudo apt-get install -qq -y wine
   - sudo apt-get install tree
   - sudo apt-get autoremove
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-
-install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
   - mkdir -p $HOME/.wine/drive_c/windows
   - chmod -R 775 $HOME/.wine
+
+install:
   - curl -O http://zlib.net/zlib-1.2.8.tar.gz
   - tar zxvf zlib-1.2.8.tar.gz
   - git clone https://github.com/PacificBiosciences/htslib.git
   - patch -p0 < htslib.patch
   - curl -O -L https://sourceforge.net/projects/mingw-w64/files/External%20binary%20packages%20%28Win64%20hosted%29/pthreads/pthreads-20100604.zip
   - mkdir -p staging/x86_64-w64-mingw32/include
-  - unzip pthreads-20100604.zip
-  - unzip pthreads-20100604/mingw64/pthreads-w64.zip -d staging
+  #- unzip pthreads-20100604.zip
+  #- unzip pthreads-20100604/mingw64/pthreads-w64.zip -d staging
   - curl -L https://raw.githubusercontent.com/Alexpux/mingw-w64/master/mingw-w64-headers/crt/errno.h -o staging/x86_64-w64-mingw32/include/errno.h
 
 script:

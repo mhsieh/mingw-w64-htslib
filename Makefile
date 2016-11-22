@@ -6,11 +6,12 @@ X64HOME  := $(SRC)/x64
 AR        = x86_64-w64-mingw32-ar
 CPP       = x86_64-w64-mingw32-cpp            
 CXX       = x86_64-w64-mingw32-g++      -m64
- CC       = x86_64-w64-mingw32-gcc      -m64
- FC       = x86_64-w64-mingw32-gfortran -m64
+CC        = x86_64-w64-mingw32-gcc      -m64
+FC        = x86_64-w64-mingw32-gfortran -m64
 F90       = x86_64-w64-mingw32-gfortran -m64
 RANLIB    = x86_64-w64-mingw32-ranlib
-export CPP CXX CC FC F90 RANLIB AR
+RC        = x86_64-w64-mingw32-windres
+export CPP CXX CC FC F90 RANLIB AR RC
 
 debug:
 	@echo X64HOME  = $(X64HOME)
