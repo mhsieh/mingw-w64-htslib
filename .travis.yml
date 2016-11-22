@@ -17,8 +17,8 @@ addons:
       - gcc-mingw-w64-x86-64
       - g++-mingw-w64-x86-64
       - gfortran-mingw-w64-x86-64
-      - mingw-w64
-      - mingw-w64-dev
+      - mingw-w64-x86-64
+      - mingw-w64-x86-64-dev
       - mingw-w64-tools
 
 before_install:
