@@ -40,6 +40,7 @@ before_install:
   - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libgcc_s_sjlj-1.dll $HOME/.wine/drive_c/windows/
   - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libgfortran-3.dll   $HOME/.wine/drive_c/windows/
   - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libquadmath-0.dll   $HOME/.wine/drive_c/windows/
+  - ln -sfn /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll         $HOME/.wine/drive_c/windows/
 
 install:
   - curl -O http://zlib.net/zlib-1.2.8.tar.gz
