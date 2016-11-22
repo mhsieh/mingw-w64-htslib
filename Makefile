@@ -39,7 +39,8 @@ x64:
         tar cf - * | tar xvf - -C ../../x64                           && \
         cd -                                                          && \
         PATH=$(SRC)/bin:${PATH}                                          \
-        $(MAKE) -C $(SRC)/htslib                                         \
+        $(MAKE) -C $(SRC)/htslib install                                 \
+	       prefix=$(X64HOME)                                         \
 	           AR="$(AR)"                                            \
                    CC="$(CC)"                                            \
 	       RANLIB="$(RANLIB)"                                        \
@@ -47,5 +48,4 @@ x64:
                CFLAGS="-Wall -O2"                                        \
               LDFLAGS="-L$(X64HOME)/lib"                                 \
              PLATFORM="MINGW"                                         && \
-        cp -a $(SRC)/htslib/libhts*  $(X64HOME)/lib/                  && \
 	tree $(X64HOME)
