@@ -41,4 +41,4 @@ x64:
              PLATFORM="MINGW"                                         && \
 	tree $(X64HOME)                                               && \
 	file $(X64HOME)/bin/*                                         && \
-	$(X64HOME)/bin/tabix --help
+	$(X64HOME)/bin/htsfile -c htslib/test/c1%23pad1.sam|strings
