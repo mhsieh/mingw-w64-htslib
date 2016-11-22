@@ -22,7 +22,7 @@ addons:
       - mingw-w64-tools
 
 before_install:
-  - sudo apt-get install -qq -y wine
+  #- sudo apt-get install -qq -y wine
   - sudo apt-get install tree
   - sudo apt-get autoremove
   - "export DISPLAY=:99.0"
