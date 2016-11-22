@@ -44,4 +44,5 @@ x64:
                CFLAGS="-Wall -O2 -I$(X64HOME)/include"                   \
               LDFLAGS="-L$(X64HOME)/lib $(X64HOME)/lib/libpthread.a"     \
              PLATFORM="MINGW"                                         && \
-        cp -a $(SRC)/htslib/libhts.a $(X64HOME)/lib/
+        cp -a $(SRC)/htslib/libhts.a $(X64HOME)/lib/                  && \
+	tree $(X64HOME)
