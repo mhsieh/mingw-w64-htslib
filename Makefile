@@ -48,4 +48,5 @@ x64:
               LDFLAGS="-L$(X64HOME)/lib"                                 \
              PLATFORM="MINGW"                                         && \
 	tree $(X64HOME)                                               && \
-	file $(X64HOME)/bin/*
+	file $(X64HOME)/bin/*                                         && \
+	$(X64HOME)/bin/tabix --help
