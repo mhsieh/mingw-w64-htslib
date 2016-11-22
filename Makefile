@@ -39,7 +39,7 @@ x64:
         tar cf - * | tar xvf - -C ../../x64                           && \
         cd -                                                          && \
         PATH=$(SRC)/bin:${PATH}                                          \
-        $(MAKE) -C $(SRC)/htslib lib-static                              \
+        $(MAKE) -C $(SRC)/htslib                                         \
 	           AR="$(AR)"                                            \
                    CC="$(CC)"                                            \
 	       RANLIB="$(RANLIB)"                                        \
