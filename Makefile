@@ -36,8 +36,6 @@ x64:
             --prefix=$(X64HOME) >> $(SRC)/config.log 2>&1             && \
         $(MAKE) install                                               && \
         cd -                                                          && \
-        cd staging/x86_64-w64-mingw32                                 && \
-        tar cf - * | tar xvf - -C ../../x64                           && \
         cd -                                                          && \
         PATH=$(SRC)/bin:${PATH}                                          \
         $(MAKE) -C $(SRC)/htslib install                                 \
@@ -49,4 +47,5 @@ x64:
                CFLAGS="-Wall -O2"                                        \
               LDFLAGS="-L$(X64HOME)/lib"                                 \
              PLATFORM="MINGW"                                         && \
-	tree $(X64HOME)
+	tree $(X64HOME)                                               && \
+	file $(X64HOME)/bin/*
