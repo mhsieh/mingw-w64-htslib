@@ -3,18 +3,16 @@
 # AUTHOR: Mengjuei Hsieh
 SRC      := $(shell pwd)
 X64HOME  := $(SRC)/x64
-I386HOME := $(SRC)/i386
 CPP       = x86_64-w64-mingw32-cpp            
 CXX       = x86_64-w64-mingw32-g++      -m64
  CC       = x86_64-w64-mingw32-gcc      -m64
  FC       = x86_64-w64-mingw32-gfortran -m64
 F90       = x86_64-w64-mingw32-gfortran -m64
 RANLIB    = x86_64-w64-mingw32-ranlib
+export CPP CXX CC FC F90 RANLIB
 
 debug:
 	@echo X64HOME  = $(X64HOME)
-	@echo I386HOME = $(I386HOME)
-	@ls -l /usr/lib/gcc/i686-w64-mingw32/4.6/
 	@ls -l /usr/lib/gcc/x86_64-w64-mingw32/4.6/
 
 clean: uninstall
@@ -28,17 +26,22 @@ x64:
         ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libgcc_s_sjlj-1.dll && \
         ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libgfortran-3.dll   && \
         ln -s /usr/lib/gcc/x86_64-w64-mingw32/4.6/libquadmath-0.dll   && \
+        cd -                                                          && \
         cd $(SRC)/zlib-1.2.8                                          && \
         test -e Makefile && $(MAKE) distclean || true                 && \
         ./configure                                                      \
             --static                                                     \
             --prefix=$(X64HOME) >> $(SRC)/config.log 2>&1             && \
         $(MAKE) install                                               && \
-        ls /usr/lib/gcc/x86_64-w64-mingw32/4.6/                       && \
+        cd -                                                          && \
+        cd staging/x86_64-w64-mingw32                                 && \
+        tar cf - * | tar xvf - -C ../../x64                           && \
         cd -                                                          && \
         PATH=$(SRC)/bin:${PATH}                                          \
-        $(MAKE) -C $(SRC)/htslib                                         \
+        $(MAKE) -C $(SRC)/htslib lib-static                              \
                    CC="$(CC)"                                            \
             ZLIB_ROOT=$(X64HOME)                                         \
-               CFLAGS="-Wall -O2 -Wno-unused-function"                   \
-             PLATFORM="MINGW"
+               CFLAGS="-Wall -O2 -I$(X64HOME)/include"                   \
+              LDFLAGS="-L$(X64HOME)/lib $(X64HOME)/lib/libpthread.a"     \
+             PLATFORM="MINGW"                                         && \
+        cp -a $(SRC)/htslib/libhts.a $(X64HOME)/lib/
