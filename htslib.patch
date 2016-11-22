@@ -1,0 +1,14 @@
+diff --git htslib/Makefile htslib/Makefile
+index f43d961..b4710bb 100644
+--- htslib/Makefile
++++ htslib/Makefile
+@@ -351,6 +351,9 @@ install-dylib: libhts.dylib installdirs
+	ln -sf libhts.$(PACKAGE_VERSION).dylib $(DESTDIR)$(libdir)/libhts.dylib
+	ln -sf libhts.$(PACKAGE_VERSION).dylib $(DESTDIR)$(libdir)/libhts.$(LIBHTS_SOVERSION).dylib
+ 
++install-dll: libhts.dll installdirs
++	$(INSTALL_PROGRAM) libhts.dll $(DESTDIR)$(libdir)/libhts.$(PACKAGE_VERSION).dll
++
+ # Substitute these pseudo-autoconf variables only at install time
+ # so that "make install prefix=/prefix/path" etc continue to work.
+ install-pkgconfig: installdirs
