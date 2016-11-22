@@ -28,7 +28,6 @@ x64:
             --prefix=$(X64HOME) >> $(SRC)/config.log 2>&1             && \
         $(MAKE) install                                               && \
         cd -                                                          && \
-        cd -                                                          && \
         PATH=$(SRC)/bin:${PATH}                                          \
         $(MAKE) -C $(SRC)/htslib install                                 \
 	       prefix=$(X64HOME)                                         \
