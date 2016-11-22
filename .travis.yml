@@ -5,11 +5,13 @@
 
 language: cpp
 os: linux
+dist: trusty
+group: beta
 env: C_COMPILER=x86_64-w64-mingw32-gcc CXX_COMPILER=x86_64-w64-mingw32-g++ RC_COMPILER=x86_64-w64-mingw32-windres CROSS_COMPILE=yes
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
+    #sources:
+    #  - ubuntu-toolchain-r-test
     packages:
       - binutils-mingw-w64-x86-64
       - gcc-mingw-w64-x86-64
