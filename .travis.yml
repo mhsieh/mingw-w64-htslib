@@ -41,8 +41,6 @@ before_install:
   - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libgfortran-3.dll   $HOME/.wine/drive_c/windows/
   - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libquadmath-0.dll   $HOME/.wine/drive_c/windows/
   - ln -sfn /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll         $HOME/.wine/drive_c/windows/
-
-before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 
 install:
