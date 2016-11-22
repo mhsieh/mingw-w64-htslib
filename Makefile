@@ -10,7 +10,7 @@ CXX       = x86_64-w64-mingw32-g++      -m64
  FC       = x86_64-w64-mingw32-gfortran -m64
 F90       = x86_64-w64-mingw32-gfortran -m64
 RANLIB    = x86_64-w64-mingw32-ranlib
-export CPP CXX CC FC F90 RANLIB
+export CPP CXX CC FC F90 RANLIB AR
 
 debug:
 	@echo X64HOME  = $(X64HOME)
