@@ -38,11 +38,11 @@ install:
   - tar zxvf zlib-1.2.8.tar.gz
   - git clone https://github.com/PacificBiosciences/htslib.git
   - patch -p0 < htslib.patch
-  - curl -O -L https://sourceforge.net/projects/mingw-w64/files/External%20binary%20packages%20%28Win64%20hosted%29/pthreads/pthreads-20100604.zip
-  - mkdir -p staging/x86_64-w64-mingw32/include
+  #- curl -O -L https://sourceforge.net/projects/mingw-w64/files/External%20binary%20packages%20%28Win64%20hosted%29/pthreads/pthreads-20100604.zip
+  #- mkdir -p staging/x86_64-w64-mingw32/include
   #- unzip pthreads-20100604.zip
   #- unzip pthreads-20100604/mingw64/pthreads-w64.zip -d staging
-  - curl -L https://raw.githubusercontent.com/Alexpux/mingw-w64/master/mingw-w64-headers/crt/errno.h -o staging/x86_64-w64-mingw32/include/errno.h
+  #- curl -L https://raw.githubusercontent.com/Alexpux/mingw-w64/master/mingw-w64-headers/crt/errno.h -o staging/x86_64-w64-mingw32/include/errno.h
 
 script:
   - make x64
