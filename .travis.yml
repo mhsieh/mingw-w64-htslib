@@ -36,10 +36,10 @@ before_install:
   - rm -f $HOME/.wine/drive_c/windows/libgcc_s_sjlj-1.dll
   - rm -f $HOME/.wine/drive_c/windows/libgfortran-3.dll
   - rm -f $HOME/.wine/drive_c/windows/libquadmath-0.dll
-  - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.6/libstdc++-6.dll     $HOME/.wine/drive_c/windows/
-  - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.6/libgcc_s_sjlj-1.dll $HOME/.wine/drive_c/windows/
-  - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.6/libgfortran-3.dll   $HOME/.wine/drive_c/windows/
-  - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.6/libquadmath-0.dll   $HOME/.wine/drive_c/windows/
+  - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libstdc++-6.dll     $HOME/.wine/drive_c/windows/
+  - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libgcc_s_sjlj-1.dll $HOME/.wine/drive_c/windows/
+  - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libgfortran-3.dll   $HOME/.wine/drive_c/windows/
+  - ln -sfn /usr/lib/gcc/x86_64-w64-mingw32/4.8/libquadmath-0.dll   $HOME/.wine/drive_c/windows/
 
 install:
   - curl -O http://zlib.net/zlib-1.2.8.tar.gz
