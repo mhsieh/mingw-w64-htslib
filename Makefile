@@ -3,6 +3,7 @@
 # AUTHOR: Mengjuei Hsieh
 SRC      := $(shell pwd)
 X64HOME  := $(SRC)/x64
+AR        = x86_64-w64-mingw32-ar
 CPP       = x86_64-w64-mingw32-cpp            
 CXX       = x86_64-w64-mingw32-g++      -m64
  CC       = x86_64-w64-mingw32-gcc      -m64
@@ -39,11 +40,12 @@ x64:
         cd -                                                          && \
         PATH=$(SRC)/bin:${PATH}                                          \
         $(MAKE) -C $(SRC)/htslib lib-static                              \
+	           AR="$(AR)"                                            \
                    CC="$(CC)"                                            \
 	       RANLIB="$(RANLIB)"                                        \
             ZLIB_ROOT=$(X64HOME)                                         \
-               CFLAGS="-Wall -O2 -I$(X64HOME)/include"                   \
-              LDFLAGS="-L$(X64HOME)/lib $(X64HOME)/lib/libpthread.a"     \
+               CFLAGS="-Wall -O2"                                        \
+              LDFLAGS="-L$(X64HOME)/lib"                                 \
              PLATFORM="MINGW"                                         && \
         cp -a $(SRC)/htslib/libhts.a $(X64HOME)/lib/                  && \
 	tree $(X64HOME)
