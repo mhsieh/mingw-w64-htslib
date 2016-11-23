@@ -58,3 +58,4 @@ before_script:
 
 script:
   - make x64
+  -	x64/bin/htsfile -c htslib/test/c1%23pad1.sam
